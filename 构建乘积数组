@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+public class Solution {
+    public int[] multiply(int[] A) {
+        int len = A.length;
+        int[] B = new int[len];
+        int n=1;
+        for(int i=0;i<len;i++){
+            n = A[i];
+            A[i] = 1;
+            B[i] = 1;
+            for(int j=0;j<len;j++){
+                B[i]*=A[j];
+            }
+            A[i] = n;
+        }
+        return B;
+    }
+}
+
+基本思路：
+构建新数组B 该数组为最后要输出的结果；
+创建中间变量n储存A[i]的数值；
+再将A[i]赋值为1,将数组A全部相乘赋值给B[i]；
+以此类推……

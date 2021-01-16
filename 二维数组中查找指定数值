@@ -1,0 +1,24 @@
+public class Solution {
+    public boolean Find(int target, int [][] array){
+        if(array==null){   //若数组为空则false
+            return false;
+        }
+        int rows = array.length;
+        int cols = array[0].length;
+        if(rows<=0||cols<=0){  //若数组不是二维数组则false
+            return false;
+        }
+        int row = 0;//行从首行开始
+        int col = cols-1;//列从尾列开始
+        while(row<rows&&col>=0){  //跳出循环条件：行列离开规定范围
+            if(array[row][col]==target){
+                return true;
+            }else if(array[row][col]>target){
+                col--;   //若比对值过大，则往左走，即col--
+            }else{
+                row++;   //若比对值过小，则往下走，级row++
+            }
+        }
+        return false;  //若最终还未找到targer值，说明二维数组中无该值false
+    }
+}

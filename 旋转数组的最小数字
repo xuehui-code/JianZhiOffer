@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+public class Solution {
+    public int minNumberInRotateArray(int [] array) {
+        int x = 0;
+        if(array.length==0){       //输出旋转数组的最小元素，即输出该数组最小元素
+            x = 0;              //若数组大小为0 则输出0；
+        }else{
+            int res = array[0];   //否则输出该数组的最小值 即选定第一个元素为基准值遍历比较
+            for(int i=0;i<array.length;i++){
+                if(array[i]<res){
+                    res = array[i];
+                }
+            }
+            x = res;
+        }
+        return x;
+    }
+}

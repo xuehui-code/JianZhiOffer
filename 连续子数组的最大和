@@ -1,0 +1,19 @@
+public class Solution {
+    public int FindGreatestSumOfSubArray(int[] array) {
+        int len = array.length;
+        if(len<=0){    //若长度不大于0  则不是数组  返回0
+            return 0;
+        }
+        int sum = array[0];
+        int max = sum;
+        for(int i=1;i<len;i++){
+            if(sum>0){  //若当前sum为正  则继续往后加
+                sum+=array[i];
+            }else{     //若当前sum为负  则从下一个开始重新计数
+                sum = array[i];
+            }
+            max = Math.max(max,sum);   //求max和sum 的最大值放在max上
+        }
+        return max;
+    }
+}

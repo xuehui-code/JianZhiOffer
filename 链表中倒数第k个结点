@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class Solution {
+    public ListNode FindKthToTail (ListNode pHead, int k) {
+        // write code here
+        int currentIndex = 0;
+        ListNode first = pHead;
+        ListNode second = pHead;
+        
+        if(pHead==null)
+            return null;
+        while(currentIndex<k&&first!=null){
+            first = first.next;  //first定位到正数的第k个
+            currentIndex++;
+        }
+        
+        while(first!=null){
+            first = first.next;   //first和second同时向后遍历，直到first遍历完，此时second就是倒数第k个
+            second = second.next;
+        }
+        if(currentIndex<k){    //若k值超出返回null
+            return null;
+        }
+        return second;
+    }
+}

@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Solution {
+    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        int len = input.length;
+        if(k>len)
+            return res;
+        for(int i=0;i<len;i++){   //做升序数组
+            for(int j=0;j<len-1-i;j++){
+                if(input[j]>input[j+1]){
+                    int tem = input[j];
+                    input[j] = input[j+1];
+                    input[j+1] = tem;
+                }
+            }
+        }
+        for(int i=0;i<k;i++){
+            res.add(input[i]);
+        }
+        return res;
+    }
+}

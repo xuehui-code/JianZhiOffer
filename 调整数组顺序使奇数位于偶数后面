@@ -1,0 +1,30 @@
+import java.util.*;
+public class Solution {
+    public int[] reOrderArray (int[] array){
+        int len = array.length;
+        int jishu = 0;
+        int oushu = 0;
+        for(int i=0;i<len;i++){
+            if(array[i]%2==0){  //遍历一遍 求得偶数奇数的数量
+                oushu++;
+            }else{
+                jishu++;
+            }
+        }
+        int[] res = new int[len];  //输出的数组
+        int count = 0;
+        for(int i=0;i<len;i++){
+            if(array[i]%2==1){   //为奇数
+                res[count] = array[i];
+                count++;
+            }
+        }
+        for(int i=0;i<len;i++){
+            if(array[i]%2==0){   //为偶数
+                res[count] = array[i];
+                count++;
+            }
+        }
+        return res;
+    }
+}

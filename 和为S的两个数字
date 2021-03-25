@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+public class Solution {
+    public ArrayList<Integer> FindNumbersWithSum(int [] array,int sum) {
+        ArrayList<Integer> res = new ArrayList<>();
+        int n = array.length;
+        int r = 0;  //有序r边小
+        int l = n-1;   //l边大
+        while(r<l){
+            if(array[r]+array[l]>sum){
+                l--;
+            }else if(array[r]+array[l]<sum){
+                r++;
+            }else{
+                res.add(array[r]);
+                res.add(array[l]);
+                return res;
+            }
+        }
+        return res;
+    }
+}

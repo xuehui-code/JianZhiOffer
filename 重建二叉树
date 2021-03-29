@@ -1,0 +1,17 @@
+import java.util.Arrays;
+
+public class Solution {
+    public TreeNode reConstructBinaryTree(int [] pre,int [] in) {   //pre前序遍历（中左右）  in中序遍历（左中右）
+        if(pre.length==0||in.length==0) //若前序遍历或后序遍历为空，则返回空
+            return null;
+        TreeNode treeNode = new TreeNode(pre[0]); //新建二叉树treeNode
+        for(int i=0;i<in.length;i++){
+            if(pre[0]==in[i]){     //in的i下标为根结点
+                //Arrays.copyOfRange(name,n,m)：复制name数组的下标n到下标m的内容
+                treeNode.left = reConstructBinaryTree(Arrays.copyOfRange(pre,1,i+1),Arrays.copyOfRange(in,0,i));
+                treeNode.right = reConstructBinaryTree(Arrays.copyOfRange(pre,i+1,pre.length),Arrays.copyOfRange(in,i+1,in.length));
+            }
+        }
+        return treeNode;
+    }
+}

@@ -1,0 +1,15 @@
+public class Solution {
+    public int JumpFloor(int target) {
+        int[] num = new int[target+1];
+        if(target>2){
+            num[1] = 1;
+            num[2] = 2;
+            for(int i=3;i<=target;i++){
+                num[i] = num[i-1]+num[i-2];   //通过规律找出次数为前两次次数的和
+            }
+        }else{
+            return target;
+        }
+        return num[target];
+    }
+}

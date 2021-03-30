@@ -1,0 +1,17 @@
+import java.util.*;
+
+public class Solution {
+    public TreeNode Mirror (TreeNode pRoot) {    //递归
+        // write code here
+        TreeNode tmp;
+        if(pRoot == null)
+            return pRoot;
+        tmp = pRoot.right;   //交换左右子树
+        pRoot.right = pRoot.left;
+        pRoot.left = tmp;
+        
+        Mirror(pRoot.left);
+        Mirror(pRoot.right);
+        return pRoot;
+    }
+}

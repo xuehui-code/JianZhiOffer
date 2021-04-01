@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class Solution {
+    
+    ArrayList<Integer> arr = new ArrayList<Integer>();
+    
+    public void Insert(Integer num) {
+        if(arr.size()==0||num>=arr.get(arr.size()-1)){
+            arr.add(num);
+        }else if(num<=arr.get(0)){
+            arr.add(0,num);
+        }else if(num>arr.get(0)){
+            for(int i=0;i<arr.size();i++){
+                if(num<arr.get(i)){
+                    arr.add(i,num);
+                    return;
+                }
+            }
+        }
+    }
+
+    public Double GetMedian() {
+        int len = arr.size();
+        if(len == 0)
+            return 0.0;
+        if(len%2 == 0){
+            return (arr.get(len/2-1)+arr.get(len/2))/2.0;
+        }
+        return arr.get(len/2)+0.0;
+    }
+
+
+}

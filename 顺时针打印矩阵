@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+public class Solution {
+    public ArrayList<Integer> printMatrix(int [][] matrix) {
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        //若数组为空 或 数组第一行长度为0 或 数组长度为0 则返回ans此时为null
+        if(matrix == null||matrix[0].length==0||matrix.length==0){
+            return ans;
+        }
+        int up = 0;//行的最小值
+        int down = matrix.length-1;  //行的最大值
+        int left = 0;//列的最小值
+        int right = matrix[0].length-1; //列的最大值
+        while(true){  //直到不符合循环内的四条break则跳出循环
+            for(int i=left;i<=right;i++){
+                ans.add(matrix[up][i]);  //行不变列右移至right
+            }
+            up++; //改变行最小值
+            if(up>down) break;
+            for(int i=up;i<=down;i++){
+                ans.add(matrix[i][right]); //列不变行下移至down
+            }
+            right--; //改变列的最大值
+            if(left>right) break;
+            for(int i=right;i>=left;i--){
+                ans.add(matrix[down][i]); //行不变列左移至left
+            }
+            down--;  //改变行的最大值
+            if(up>down) break;
+            for(int i=down;i>=up;i--){
+                ans.add(matrix[i][left]);  //列不变行上移至up
+            }
+            left++;  //改变列的最小值
+            if(left>right) break;
+        }
+        return ans;
+    }
+}

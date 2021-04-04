@@ -1,0 +1,18 @@
+public class Solution {
+    public boolean IsBalanced_Solution(TreeNode root) {   //是否为平衡二叉树
+        if(root == null){
+            return true;
+        }
+        //Math.abs返回绝对值
+        //左子树深度等于右子树深度 且 左子树是平衡的右子树是平衡的（递归）
+        return Math.abs(maxDepth(root.left)-maxDepth(root.right))<=1&&
+            IsBalanced_Solution(root.left)&&IsBalanced_Solution(root.right);
+    }
+    private int maxDepth(TreeNode root){  //计算深度
+        if(root == null){   //若为空深度为0
+            return 0;
+        }
+        //否则 返回1+左右子树的最大深度（递归）
+        return 1+Math.max(maxDepth(root.left),maxDepth(root.right));
+    }
+}

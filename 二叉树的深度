@@ -1,0 +1,14 @@
+public class Solution {
+    private int ret = 0;
+    public int TreeDepth(TreeNode root) {
+        dfs(root,0);
+        return ret;
+    }
+    public void dfs(TreeNode root,int depth){   //深度遍历
+        if(root != null){   //只要root不为空则继续
+            ret = Math.max(ret,++depth);  //ret和++depth的最大值为ret
+            dfs(root.left,depth);  //root左子树递归
+            dfs(root.right,depth); //root右子树递归
+        }
+    }
+}

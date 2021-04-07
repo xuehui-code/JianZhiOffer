@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.Stack;
+
+public class Solution {
+    public boolean IsPopOrder(int [] pushA,int [] popA) {
+        if(pushA.length != popA.length) return false;    //若出栈入栈的长度不等 则false
+        Stack<Integer> s = new Stack<>();  //定义栈 s
+        int m = 0;
+        for(int i=0;i<pushA.length;i++){   //遍历一遍pushA数组
+            if(pushA[i] != popA[m]) s.push(pushA[i]);
+            else {
+                m++;
+                while(!s.isEmpty() && s.peek()==popA[m]){
+                        s.pop();
+                        m++;
+                }
+            }
+        }
+        while(!s.isEmpty()){
+            int tmp = s.pop();
+            if(tmp == popA[m]) m++;
+            else return false;
+        }
+        return true;
+    }
+}

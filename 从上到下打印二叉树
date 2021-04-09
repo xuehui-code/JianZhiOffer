@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+
+public class Solution {
+    public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
+        ArrayList<Integer> list = new ArrayList<>();   //定义整形list
+        ArrayList<TreeNode> queue = new ArrayList<>();  //定义二叉树queue
+        if(root == null) return list;   //若root为空  返回list 此时list为空  否则执行以下
+        queue.add(root);  //将root放入queue 此时为二叉树的根结点
+        while(queue.size()!=0){  //只要queue的大小不是0 继续循环执行
+            TreeNode tmp = queue.remove(0);   //树tmp为queue删掉根结点
+            if(tmp.left!=null){  //若tmp有左子树  将其加入到queue中
+                queue.add(tmp.left);
+            }
+            if(tmp.right!=null){  //若tmp有右子树  将其加入到queue中
+                queue.add(tmp.right);
+            }
+            list.add(tmp.val);  //list中加入tmp的值
+        }
+        return list;  //返回list值
+    }
+}
